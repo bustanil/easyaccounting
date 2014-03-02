@@ -1,4 +1,4 @@
 easyaccounting
 ==============
 
-Accounting is easy they say.
+Accounting is easy they said.
