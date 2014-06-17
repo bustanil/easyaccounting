@@ -18,8 +18,7 @@ public class TransactionType {
     public Journal createJournal(Transaction transaction) {
         Journal journal = new Journal(transaction.getTransactionDate(), new Date());
         for (AccountConfig accountConfig : involvedAccounts) {
-            JournalEntry journalEntry = new JournalEntry(accountConfig.getAccount(), accountConfig.getDrCr(), transaction.getAmount());
-            journal.addEntry(journalEntry);
+            journal.addEntry(accountConfig, transaction);
         }
         return journal;
     }

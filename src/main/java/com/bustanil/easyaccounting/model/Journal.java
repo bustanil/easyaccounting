@@ -17,13 +17,6 @@ public class Journal {
         this.postingDate = postingDate;
     }
 
-    public void addEntry(JournalEntry entry) {
-        if(journalEntries == null){
-            journalEntries = new ArrayList<JournalEntry>();
-        }
-        journalEntries.add(entry);
-    }
-
     public List<JournalEntry> getEntries() {
         return journalEntries;
     }
@@ -49,5 +42,13 @@ public class Journal {
             }
         }
         return drTotal.compareTo(crTotal) == 0;
+    }
+
+    public void addEntry(AccountConfig accountConfig, Transaction transaction) {
+        JournalEntry journalEntry = new JournalEntry(accountConfig.getAccount(), accountConfig.getDrCr(), transaction.getAmount());
+        if(journalEntries == null){
+            journalEntries = new ArrayList<JournalEntry>();
+        }
+        journalEntries.add(journalEntry);
     }
 }

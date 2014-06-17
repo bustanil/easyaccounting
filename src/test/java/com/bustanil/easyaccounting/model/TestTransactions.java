@@ -10,14 +10,14 @@ import static org.junit.Assert.*;
 public class TestTransactions {
 
     @Test
-    public void buyCompanyStock() {
-        TransactionType stockPurchase = new TransactionType();
+    public void testAddEquity() {
+        TransactionType addEquity = new TransactionType();
         Account cashAccount = new Account("CSH001", "Cash account", AccountType.ASSET);
         Account equityAccount = new Account("EQU001", "Equity", AccountType.EQUITY);
-        stockPurchase.addAccountConfig(cashAccount, DebitCredit.DR);
-        stockPurchase.addAccountConfig(equityAccount, DebitCredit.CR);
-        Transaction stockPurchaseTransaction = new Transaction(new Date(), "beli saham dengan tunai", stockPurchase, BigDecimal.valueOf(100));
-        Journal journal = stockPurchase.createJournal(stockPurchaseTransaction);
+        addEquity.addAccountConfig(cashAccount, DebitCredit.DR);
+        addEquity.addAccountConfig(equityAccount, DebitCredit.CR);
+        Transaction stockPurchaseTransaction = new Transaction(new Date(), "tambah modal usaha", addEquity, BigDecimal.valueOf(100));
+        Journal journal = addEquity.createJournal(stockPurchaseTransaction);
 
         assertEquals(2, journal.getEntries().size());
 
