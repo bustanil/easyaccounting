@@ -2,7 +2,6 @@ package com.bustanil.easyaccounting.model;
 
 public class Account {
 
-    private Long id;
     private String code;
     private String name;
     private AccountType type;
@@ -13,8 +12,15 @@ public class Account {
         this.type = type;
     }
 
-
     public String getCode() {
         return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public AccountType getType() {
+        return type;
     }
 }

@@ -1,13 +1,12 @@
 package com.bustanil.easyaccounting.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TransactionType {
 
-    private Long id;
     private List<AccountConfig> involvedAccounts;
-
 
     public void addAccountConfig(Account account, DebitCredit debitCredit) {
         if(involvedAccounts == null){
@@ -16,7 +15,12 @@ public class TransactionType {
         involvedAccounts.add(new AccountConfig(account, debitCredit));
     }
 
-    public List<AccountConfig> getInvolvedAccounts() {
-        return involvedAccounts;
+    public Journal createJournal(Transaction transaction) {
+        Journal journal = new Journal(transaction.getTransactionDate(), new Date());
+        for (AccountConfig accountConfig : involvedAccounts) {
+            JournalEntry journalEntry = new JournalEntry(accountConfig.getAccount(), accountConfig.getDrCr(), transaction.getAmount());
+            journal.addEntry(journalEntry);
+        }
+        return journal;
     }
 }

@@ -20,10 +20,6 @@ public class JournalEntry {
         return account;
     }
 
-    public String getAccountCode() {
-        return getAccount().getCode();
-    }
-
     public DebitCredit getDrCr() {
         return drCr;
     }

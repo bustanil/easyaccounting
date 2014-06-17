@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Journal {
 
-    private Long id;
     private Date postingDate;
     private Date transactionDate;
+    private String referenceNo;
     private List<JournalEntry> journalEntries;
 
     public Journal(Date transactionDate, Date postingDate) {
@@ -30,7 +30,7 @@ public class Journal {
 
     public JournalEntry getEntryByAccountCode(String accountCode) {
         for (JournalEntry journalEntry : journalEntries) {
-            if(journalEntry.getAccountCode().equals(accountCode)){
+            if(journalEntry.getAccount().getCode().equals(accountCode)){
                 return journalEntry;
             }
         }

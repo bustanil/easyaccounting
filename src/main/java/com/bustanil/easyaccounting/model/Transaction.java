@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Transaction {
 
-    private Long id;
     private Date transactionDate;
     private String description;
     private TransactionType transactionType;
@@ -18,12 +17,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Journal createJournal() {
-        Journal journal = new Journal(transactionDate, new Date());
-        for (AccountConfig accountConfig : transactionType.getInvolvedAccounts()) {
-            JournalEntry journalEntry = new JournalEntry(accountConfig.getAccount(), accountConfig.getDrCr(), this.amount);
-            journal.addEntry(journalEntry);
-        }
-        return journal;
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public Date getTransactionDate() {
+        return transactionDate;
     }
 }

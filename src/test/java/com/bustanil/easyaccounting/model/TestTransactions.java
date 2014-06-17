@@ -16,8 +16,8 @@ public class TestTransactions {
         Account equityAccount = new Account("EQU001", "Equity", AccountType.EQUITY);
         stockPurchase.addAccountConfig(cashAccount, DebitCredit.DR);
         stockPurchase.addAccountConfig(equityAccount, DebitCredit.CR);
-        Transaction buyStock = new Transaction(new Date(), "beli saham dengan tunai", stockPurchase, BigDecimal.valueOf(100));
-        Journal journal = buyStock.createJournal();
+        Transaction stockPurchaseTransaction = new Transaction(new Date(), "beli saham dengan tunai", stockPurchase, BigDecimal.valueOf(100));
+        Journal journal = stockPurchase.createJournal(stockPurchaseTransaction);
 
         assertEquals(2, journal.getEntries().size());
 
